@@ -1,0 +1,46 @@
+<head>
+    <link rel="stylesheet" href="vista-usuario.component.css">
+  </head>
+  <body>
+    <button class="cerrar-sesion-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+
+  
+
+    <div class="cartelera">
+
+      <div class="pelicula" *ngFor="let peli of peliculas | async">
+        
+        <img src="{{ peli.imagen }}" alt="Imagen de {{ peli.titulo }}">
+  
+       
+        <h2>{{ peli.titulo }}</h2>
+  
+        
+        <p><strong>Género:</strong> {{ peli.genero }}</p>
+  
+        
+        <p><strong>Precio alquiler:</strong> ${{ peli.precio_alquiler }}</p>
+        <p><strong>Precio compra:</strong> ${{ peli.precio_compra }}</p>
+  
+       
+        <button class="comprar-btn" (click)="irACarrito(peli.id_pelicula)">Comprar</button>
+
+  
+        
+        <button class="detalles-btn" (click)="toggleDetalles(peli.id_pelicula)">
+          Ver más detalles
+        </button>
+  
+        
+        <div class="detalles" *ngIf="isDetallesVisible(peli.id_pelicula)">
+          <p><strong>Descripción:</strong> {{ peli.descripcion }}</p>
+          <p><strong>Año de lanzamiento:</strong> {{ peli.ano_lanzamiento }}</p>
+          <p><strong>Director:</strong> {{ peli.director }}</p>
+          <p><strong>Actores:</strong> {{ peli.actores }}</p>
+          <p><strong>Duración:</strong> {{ peli.duracion }} minutos</p>
+        </div>
+      </div>
+    </div>
+  
+  </body>
+  

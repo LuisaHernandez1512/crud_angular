@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="login.component.css">
+  </head>
+  <h3>Iniciar Sesion </h3>
+  <div class="row">
+      <div class="col-sm-12">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+          <fieldset class="form-group">
+            <div class="col-sm-12">
+              <label class="control-label" for="correo">Correo</label>
+              <input type="text" class="form-control" required [(ngModel)]="user.correo" name="correo">
+            </div>
+          </fieldset>
+  
+          <fieldset class="form-group">
+              <div class="col-sm-12">
+                <label class="control-label" for="clave">clave</label>
+                <input type="password" class="form-control" required [(ngModel)]="user.clave" name="clave">
+              </div>
+            </fieldset>
+  
+            <fieldset class="form-group">
+              <div class="col-sm-12">
+                <label class="control-label" for="nombre_completo">Nombre completo</label>
+                <input type="text" class="form-control" required [(ngModel)]="user.nombre_completo" name="nombre_completo">
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+                </div>
+            </fieldset>
+            </form>
+          </div>
+        </div>

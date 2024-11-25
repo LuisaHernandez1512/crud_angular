@@ -1,0 +1,51 @@
+<head>
+  <link rel="stylesheet" href="lista-peli.component.css">
+</head>
+<body>
+
+  <button class="cerrar-sesion-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+  <h1>Lista de Películas</h1>
+
+
+  <div class="agregar-btn-container">
+    <a class="btn-agregar" [routerLink]="['/peli/agregar']">+</a>
+  </div>
+
+  <div class="cartelera">
+
+    <div class="pelicula" *ngFor="let peli of peliculas | async">
+
+      <img src="{{ peli.imagen }}" alt="Imagen de {{ peli.titulo }}" class="imagen">
+
+
+      <h2>{{ peli.titulo }}</h2>
+
+
+      <p><strong>Género:</strong> {{ peli.genero }}</p>
+
+
+      <p><strong>Precio alquiler:</strong> ${{ peli.precio_alquiler }}</p>
+      <p><strong>Precio compra:</strong> ${{ peli.precio_compra }}</p>
+
+
+      <p><strong>Descripción:</strong> {{ peli.descripcion }}</p>
+
+
+      <p><strong>Año de lanzamiento:</strong> {{ peli.ano_lanzamiento }}</p>
+
+
+      <p><strong>Director:</strong> {{ peli.director }}</p>
+
+
+      <p><strong>Actores:</strong> {{ peli.actores }}</p>
+
+      <p><strong>Duración:</strong> {{ peli.duracion }} minutos</p>
+
+
+      <div class="acciones">
+        <a class="btn btn-info" [routerLink]="['/peli/editar/', peli.id_pelicula]">Editar</a>
+        <a class="btn btn-danger" (click)="borrarpeli(peli.id_pelicula)">Borrar</a>
+      </div>
+    </div>
+  </div>
+</body>
